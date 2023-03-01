@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Allura&family=Blaka+Hollow&family=Cinzel:wght@400;500;700&family=DM+Serif+Display&family=Dancing+Script:wght@400;600&family=GFS+Didot&family=Lexend+Exa:wght@300;400&family=Lobster&family=Merriweather+Sans:wght@300;400&family=Montserrat:wght@300;400;700;900&family=Pacifico&family=Poppins:wght@300;400&family=Raleway:wght@300;400&family=Sacramento&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/5bf420e092.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>toDoList</title>
+</head>
+<body>
+    <div class="date-box">
+    <h1 class="date-text"><%=date%></h1>
+    </div>
+
+   <div class="box">
+         
+        <h2 class="box-title" >To Do list</h2>
+
+        <hr>
+
+        <% for (var x = 0 ; x < listItems.length ; x ++ ) { %>
+            <div class="item">
+                <input type="checkbox" >
+                <p> <%=listItems[x]%> </p>
+            </div>
+        <% } %>
+       
+        <div class="form"> 
+        <form action="/list" method="post">
+            <input type="text" name="newItem"  autocomplete="off" placeholder= <%=prompt%> >
+            <button type="submit" name="button" value="" ><i class="fa-solid fa-plus"></i></button>
+        </form>
+        </div>
+       
+  </div>  <!-- main box -->
+
+</body>
+</html>

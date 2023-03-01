@@ -1,0 +1,107 @@
+body {
+    background-color:  #F4FFFE;
+    margin : 0 ; 
+}
+
+p {
+   font-family : "poppins" ;
+   font-size : 20px ;
+   color : rgb(55, 65, 79) ;
+   
+}
+
+.date-box {
+    text-align : center ;
+    padding-top : 10px;
+    margin : 55px auto ; 
+    width: 349px;
+    height: 55px;
+    background: linear-gradient(180deg, #D7D0FF 0%, rgba(249, 155, 183, 0.34) 103.8%);
+    box-shadow: 3px 3px 14px #D7D0FF;
+    border-radius: 18px;
+
+}
+
+.date-text {
+    margin : 0 ;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 28px;
+    color: #FFFFFF;
+}
+
+.box-title {
+    margin : 0 ;
+    font-family: 'Lobster';
+font-style: normal; 
+font-weight: 400;
+font-size: 45px;
+line-height: 56px;
+
+color: #FFFFFF;
+
+text-shadow: 3px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+hr {
+    width: 363px;
+    border: 2px solid #FFFFFF;
+}
+
+.box {
+    padding : 6px;
+    text-align : center; 
+    margin : 70px auto  ;
+    width: 420px;
+    
+    background: linear-gradient(180deg, #D0FFF7 0%, rgba(155, 215, 249, 0.34) 103.8%);
+    box-shadow: 5px 5px 8px rgba(121, 188, 176, 0.37);
+    border-radius: 18px;
+}
+
+.item {
+    display : flex ;
+    margin : 1rem auto ;
+    align-items : center ;
+    height : 50px ;
+    max-width : 363px ;
+    background: #DFFDFF;
+    box-shadow: inset -2px -2px 6px #EDFFFC, inset 2px 2px 6px rgba(102, 202, 184, 0.49);
+    border-radius: 5px;
+}
+
+input[type="text"] {
+    text-align :  center ;
+    font-family : "poppins" ;
+    font-size : 20px ;
+    width : 296px; 
+    height : 50px ;
+    margin-right : 10px ;
+    background: #DFFDFF;
+    box-shadow: inset -2px -2px 6px #EDFFFC, inset 2px 2px 6px rgba(102, 202, 184, 0.49);
+    border-radius: 5px;
+    border-width : 0 ;
+}
+
+input[type="checkbox"] {
+    margin : 5px 14px ;
+}
+
+input:checked+p {
+    text-decoration : line-through ;
+    text-decoration-color : rgb(40, 138, 250) ;
+}
+
+button {
+    width: 44px;
+    height: 44px;
+   
+    background: #C8F0F8;
+    box-shadow: -4px -4px 10px rgba(226, 250, 255, 0.61), 4px 4px 14px rgba(156, 187, 193, 0.36);
+    border-radius: 5px;
+    border-width : 0 ;
+}
+
+.form {
+    margin : 1rem 0 1rem ;
+}

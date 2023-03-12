@@ -1,52 +1,76 @@
 const express = require("express") ;
+const date = require('./date-utils.js') ;
+const mongoose = require('mongoose') ;
 
 const app = express() ;
+mongoose.connect('mongodb://localhost:27017/todolistDB', {useNewUrlParser : true});
 
 app.use(express.urlencoded({extended : true})) ;
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public")) ;
 
-let tasks = [] ;
+//load date 
+const dateItem = date.datestr ;
 
+const taskSchema = new mongoose.Schema( {
+    name : String 
+}) ;
+
+const Task = mongoose.model('Task' , taskSchema) ;
 
 
 app.get("/list" ,function(req,res) {
 
-    //date 
-    var today = new Date() ;
+    async function loadTasks () {
+        
+        //returns a list of objects 
+        const taskArr = await Task.find({}) ;
 
-    var options = {
-    weekday : "long" ,
-    day : "numeric" ,
-    month : "long" ,
-    } ;
+        if (taskArr.length === 0 ) {
+            var promptText = 'add_task' ;
+        }
+        else {
+            promptText = 'type_clear' ;
+        }
 
-    var datestr = today.toLocaleDateString("en-US",options) ;
-
-    //prompt text
-    if (tasks.length === 0 ) {
-         var promptText = "add_item " ;
-    }
-    else {
-        promptText = "type_clear "
+        res.render("list.ejs",{ listItems : taskArr, date : dateItem , prompt : promptText}) ;
     }
 
-    
-    res.render("list.ejs",{ listItems : tasks, date : datestr , prompt : promptText}) ;
+    loadTasks() ;
+
 }) ;
 
 app.post("/list" ,function (request,response) {
-    var newItem = request.body.newItem  ;
-    if (newItem === "clear") {
-        tasks = [] ; 
-    }
-    else {
-        tasks.push(newItem) ;
-    }
 
-    response.redirect("/list") ;
+    //parse req body 
+    var newItem = request.body.newItem  ;
+    
+    async function addTask(task) {
+ 
+        if (task === 'clear') {
+            const res = await Task.deleteMany({}) ;
+            console.log(res.deletedCount) ;
+        } 
+        else {
+            //create task item 
+            var newTask = new Task({
+                name : task 
+            }) ;
+            
+            //save to collection
+            newTask.save() ;
+            console.log(' new task added : '+ task) ;
+        }
+        //redirect to homepage
+        response.redirect("/list") ;
+    } ;
+
+    addTask(newItem) ;
+
+
 }) ;
 
+//connect ap to server
 app.listen(3000 , function() {
     console.log("connected to port 3000")
 }) ;

@@ -12,6 +12,7 @@
     <title>toDoList</title>
 </head>
 <body>
+    <section id="main">
     <div class="date-box">
     <h1 class="date-text"><%=date%></h1>
     </div>
@@ -25,7 +26,7 @@
         <% for (var x = 0 ; x < listItems.length ; x ++ ) { %>
             <div class="item">
                 <input type="checkbox" >
-                <p> <%=listItems[x]%> </p>
+                <p> <%=listItems[x].name%> </p>
             </div>
         <% } %>
        
@@ -37,6 +38,11 @@
         </div>
        
   </div>  <!-- main box -->
+</section>
+
+  <footer>
+    <p>Made with <3 by Sujxy</p>
+  </footer>
 
 </body>
 </html>
